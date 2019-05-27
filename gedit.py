@@ -3,3 +3,4 @@ num2 = 20
 num3 = 30
 wang = 19
 name = 30
+name02 = 50
