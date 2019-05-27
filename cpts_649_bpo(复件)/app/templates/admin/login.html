@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <!-- Bootstrap -->
+    <link href="/static/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/admin/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="/static/admin/assets/styles.css" rel="stylesheet" media="screen">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/static/admin/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body id="login">
+<div class="container">
+
+    <form class="form-signin" action="{{ url_for('.login_vf') }}" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="email" name="email" id='email' class="input-block-level" placeholder="Email address">
+        <input type="password" name="email" id='password' class="input-block-level" placeholder="Password">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-large btn-primary" id='submit' type="button">Sign in</button>
+    </form>
+
+</div> <!-- /container -->
+<script src="/static/admin/vendors/jquery-1.9.1.min.js"></script>
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $('#submit').click(function () {
+        var email = $('#email').val();
+        var password = $('#password').val();
+
+        $.ajax({
+            url:'{{ url_for(".login_vf") }}',
+            type:'post',
+            data:{
+                'email':email,
+                'password':password
+            }
+        }).done(function (data) {
+            if (data.status == 0){
+                console.log("登录成功");
+                alert(data.msg);
+                window.location.href = '/admin/index.html'
+            }else{
+                alert('登录失败：' + data.msg);
+
+            }
+
+
+        })
+
+    })
+</script>
+</body>
+</html>

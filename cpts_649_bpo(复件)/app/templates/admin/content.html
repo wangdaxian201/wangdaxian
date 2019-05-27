@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>测试控制语句</h2>
+<!--{{ user }}-->
+<!--{{ user.name }}-->
+<!--{% if user %}}-->
+<!--    <em>欢迎您：</em><a href="">{{ user.name }}</a>-->
+<!--{% else %}-->
+<!--    <em>登录</em><a href="">注册</a>-->
+<!--{% endif %}-->
+
+<!--<br>-->
+<!--<hr>-->
+
+<!--{%for user in users %}-->
+<!--    <div>{{user.name}}-&#45;&#45;&#45;&#45;{{loop.index0}}-&#45;&#45;&#45;&#45;{{loop.revindex}}&#45;&#45;&#45;&#45;{{loop.revindex0}}</div>-->
+
+<!--{% endfor %}-->
+
+
+<!--<br>-->
+<!--<hr>-->
+
+<!--{% for user in users if user.name %}-->
+<!--    <div>{{user.name}}&#45;&#45;&#45;&#45;{{loop.first}}-&#45;&#45;&#45;&#45;{{loop.last}}&#45;&#45;&#45;&#45;{{loop.length}}</div>-->
+
+<!--{% endfor %}-->
+
+<!--<br>-->
+<!--<hr>-->
+
+
+<!--{% for user in users if user.name %}-->
+<!--    <div>{{user.name}}&#45;&#45;&#45;&#45;{{loop.cycle('hehe',2,3,4)}}</div>-->
+
+<!--{% endfor %}-->
+
+{% for item in my_list if item.id != 5 %}
+    {% if loop.index == 1 %}
+        <li style="background-color: orange">{{ item.value }}</li>
+    {% elif loop.index == 2 %}
+        <li style="background-color: green">{{ item.value }}</li>
+    {% elif loop.index == 3 %}
+        <li style="background-color: red">{{ item.value }}</li>
+    {% else %}
+        <li style="background-color: purple">{{ item.value }}</li>
+    {% endif %}
+
+{% endfor %}
+
+</body>
+</html>
